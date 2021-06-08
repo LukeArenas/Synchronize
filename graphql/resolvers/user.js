@@ -1,6 +1,14 @@
 const User = require('../../models/User')
 
 module.exports = {
+  user: async ({ userId }) => {
+    try {
+      const user = await User.findById(userId)
+      return user
+    } catch (error) {
+      throw error
+    }
+  },
   register: async (args) => {
     try {
       const newUser = new User({

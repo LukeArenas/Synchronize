@@ -37,6 +37,7 @@ module.exports = buildSchema(`
 
   type RootQuery {
     events: [Event!]!
+    user(userId: ID!): User!
     login(username: String!, password: String!): AuthData!
   }
 
