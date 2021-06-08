@@ -1,9 +1,22 @@
 const User = require('../../models/User')
 const Event = require('../../models/Event')
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
+//helper function to bind events to user query
 const findEvents = async (userId) => {
   const events = await Event.find({ owner: userId })
-  return events
+  const eventsArray = events.map((event) => {
+    return transformEvent(event)
+  })
+  return eventsArray
+}
+
+const transformEvent = (event) => {
+  return {
+    ...event._doc,
+    date: new Date(event._doc.date).toISOString()
+  }
 }
 
 module.exports = {

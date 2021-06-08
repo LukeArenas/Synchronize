@@ -1,37 +1,15 @@
 const Event = require('../../models/Event')
 const User = require('../../models/User')
 
-//helper functions to transform the event mongo returns; stripping the metadata, reformatting fields, and attaching the user associated
-const findUser = async (userId) => {
-  try {
-    const user = await User.findById(userId)
-    return {
-      ...user._doc
-    }
-  } catch (err) {
-    throw err
-  }
-}
+//helper function to transform the event mongo returns; stripping the metadata, reformatting fields
 const transformEvent = (event) => {
   return {
     ...event._doc,
-    date: new Date(event._doc.date).toISOString(),
-    owner: findUser.bind(this, event.owner)
+    date: new Date(event._doc.date).toISOString()
   }
 }
 
 module.exports = {
-  events: async () => {
-    try {
-      const events = await Event.find()
-      // const eventsArray = events.map((event) => {
-      //   transformEvent(event)
-      // })
-      return events
-    } catch (error) {
-      throw error
-    }
-  },
   createEvent: async (args, req) => {
     const event = new Event({
       title: args.eventInput.title,
