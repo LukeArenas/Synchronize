@@ -1,10 +1,19 @@
 const User = require('../../models/User')
+const Event = require('../../models/Event')
+
+const findEvents = async (userId) => {
+  const events = await Event.find({ owner: userId })
+  return events
+}
 
 module.exports = {
   user: async ({ userId }) => {
     try {
       const user = await User.findById(userId)
-      return user
+      return {
+        ...user._doc,
+        createdEvents: findEvents.bind(this, user._doc._id)
+      }
     } catch (error) {
       throw error
     }
