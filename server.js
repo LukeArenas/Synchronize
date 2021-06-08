@@ -10,7 +10,7 @@ const app = express()
 app.use(bodyParser.json())
 
 // app.use('/graphql', graphQLHTTP({
-//   schema: ,
+//   schema: graphQLSchema,
 //   rootValue: ,
 //   graphiql: true
 // }))
