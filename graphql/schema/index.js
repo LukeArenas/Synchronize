@@ -42,7 +42,7 @@ module.exports = buildSchema(`
 
   type RootMutation {
     createEvent(eventInput: EventInput): Event
-    createUser(userInput: UserInput): User
+    register(userInput: UserInput): User
   }
 
   schema {

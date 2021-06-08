@@ -1,7 +1,9 @@
 const eventResolver = require('./event')
+const userResolver = require('./user')
 
 const combinedResolver = {
-  ...eventResolver
+  ...eventResolver,
+  ...userResolver
 }
 
 module.exports = combinedResolver
