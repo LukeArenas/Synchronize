@@ -22,9 +22,12 @@ const transformEvent = (event) => {
 module.exports = {
   user: async ({ userId }) => {
     try {
+      //find user by id
       const user = await User.findById(userId)
+      //format data to return user plus events associated to them
       return {
         ...user._doc,
+        password: null,
         createdEvents: findEvents.bind(this, user._doc._id)
       }
     } catch (error) {
@@ -33,13 +36,50 @@ module.exports = {
   },
   register: async (args) => {
     try {
+      const { username, password } = args.userInput
+      //check if user already exists
+      const existingUser = await User.findOne({ username: username })
+      if (existingUser) {
+        throw new Error('User already exists!')
+      }
+      //if not, hash password
+      const hashedPassword = await bcrypt.hash(password, 12)
+      //create new user
       const newUser = new User({
-        username: args.userInput.username,
-        password: args.userInput.password
+        username: username,
+        password: hashedPassword
       })
+      //save new user
       const result = await newUser.save()
-      const transformedResult = { ...result._doc, password: null }
-      return transformedResult
+      //return new user except password
+      return { ...result._doc, password: null }
+    } catch (error) {
+      throw error
+    }
+  },
+  login: async (args) => {
+    try {
+      const { username, password } = args
+      //does user exist?
+      const existingUser = await User.findOne({ username: username })
+      if (!existingUser) {
+        throw new Error('User does not exist!')
+      }
+      //does password match?
+      const isPassword = await bcrypt.compare(password, existingUser.password)
+      if (!isPassword) {
+        throw new Error('Password incorrect!')
+      }
+      //create token
+      const token = jwt.sign(
+        {
+          userId: existingUser.id,
+          username: existingUser.username
+        },
+        process.env.TOKEN_KEY
+      )
+      //return necessary user info and token
+      return { userId: existingUser.id, token: token }
     } catch (error) {
       throw error
     }
