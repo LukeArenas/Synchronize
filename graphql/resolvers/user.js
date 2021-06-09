@@ -57,9 +57,8 @@ module.exports = {
       throw error
     }
   },
-  login: async (args) => {
+  login: async ({ username, password }) => {
     try {
-      const { username, password } = args
       //does user exist?
       const existingUser = await User.findOne({ username: username })
       if (!existingUser) {
