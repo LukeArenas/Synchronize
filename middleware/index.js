@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken')
 
+//MIDDLEWARE CANNOT LOCK DOWN PATHS BECAUSE THERE IS ONLY ONE PATH FOR ALL REQUESTS, THEREFORE IT ONLY SETS METADATA IN GRAPHQL
+
 module.exports = (req, res, next) => {
   //check for auth field
   const header = req.get('Authorization')
@@ -18,7 +20,7 @@ module.exports = (req, res, next) => {
   //decode token
   let decodedToken
   try {
-    decodedToken = await jwt.verify(token, process.env.TOKEN_KEY)
+    decodedToken = jwt.verify(token, process.env.TOKEN_KEY)
   } catch (error) {
     req.isAuth = false
     return next()
@@ -31,4 +33,5 @@ module.exports = (req, res, next) => {
   //if all steps have been passed, user is authenticated
   req.isAuth = true
   req.userId = decodedToken.userId
+  next()
 }

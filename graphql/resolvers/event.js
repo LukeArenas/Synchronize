@@ -11,19 +11,31 @@ const transformEvent = (event) => {
 
 module.exports = {
   createEvent: async (args, req) => {
+    const { title, details, location, date } = args.eventInput
+    //check if user is authenticated
+    if (!req.isAuth) {
+      throw new Error('Cannot create event - unauthorized!')
+    }
     const event = new Event({
-      title: args.eventInput.title,
-      details: args.eventInput.details,
-      location: args.eventInput.location,
-      date: args.eventInput.date,
-      owner: '60bfd56fd0868909fd6080c8'
+      title: title,
+      details: details,
+      location: location,
+      date: new Date(date),
+      owner: req.userId
     })
+    let createdEvent
     try {
       const result = await event.save()
-      const createdEvent = transformEvent(result)
-      return createdEvent
+      createdEvent = transformEvent(result)
+      const owner = await User.findById(req.userId)
+      if (!owner) {
+        throw new Error('Cannot create event - user not found!')
+      }
+      owner.createdEvents.push(event)
+      await owner.save()
     } catch (error) {
       throw error
     }
+    return createdEvent
   }
 }
