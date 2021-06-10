@@ -1,0 +1,20 @@
+.calendar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.weekdays {
+  width: 70vw;
+  display: flex;
+}
+
+.weekday {
+  width: 10vw;
+}
+
+.calendar-days {
+  display: flex;
+  width: 70vw;
+  flex-wrap: wrap;
+}
