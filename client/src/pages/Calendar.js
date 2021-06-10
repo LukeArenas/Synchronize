@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Day from '../components/Day'
+import CreateModal from '../components/CreateModal'
+import Backdrop from '../components/Backdrop'
+import { useHistory } from 'react-router-dom'
 import '../styles/Calendar.css'
 
 //logic to find current month, year
@@ -43,10 +46,29 @@ while (isContinued) {
   }
 }
 
-console.log(dateArray)
 const Calendar = () => {
+  const history = useHistory()
+  const handleClick = () => {
+    console.log('clicked')
+    setCreating(true)
+    console.log(isCreating)
+  }
+
+  const [isCreating, setCreating] = useState(false)
+
   return (
     <div className="calendar">
+      {isCreating ? (
+        <div>
+          <Backdrop />
+          <CreateModal />
+        </div>
+      ) : (
+        <button className="create-button" onClick={() => handleClick()}>
+          +Create Event
+        </button>
+      )}
+
       <div className="weekdays">
         <div className="weekday">
           <h2>Sunday</h2>

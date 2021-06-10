@@ -18,3 +18,7 @@
   width: 70vw;
   flex-wrap: wrap;
 }
+
+.create-button {
+  width: 30vw;
+}
