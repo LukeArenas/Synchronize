@@ -1,9 +1,11 @@
+const authResolver = require('./auth')
 const eventResolver = require('./event')
-const userResolver = require('./user')
+const bookingResolver = require('./booking')
 
-const combinedResolver = {
+const rootResolver = {
+  ...authResolver,
   ...eventResolver,
-  ...userResolver
-}
+  ...bookingResolver
+} //combines all resolvers into one to use in app.js
 
-module.exports = combinedResolver
+module.exports = rootResolver

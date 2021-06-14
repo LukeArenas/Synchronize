@@ -1,0 +1,59 @@
+.main-navigation {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 3.5rem;
+  background-color: rgb(243, 149, 26);
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.main-navigation_logo h1 {
+  margin: 0 0 0 1.5rem;
+  font-size: 1.5rem;
+}
+
+.main-navigation_items {
+  margin-left: 1.5rem;
+}
+
+.main-navigation_items ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+.main-navigation_items li {
+  margin: 0 1rem;
+}
+
+/* since NavLink works like anchor tag, this will affect the NavLinks */
+.main-navigation_items a,
+.main-navigation_items button {
+  text-decoration: none;
+  color: white;
+  border: none;
+  font: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0;
+}
+
+.main-navigation_items a:hover,
+.main-navigation_items a:active,
+.main-navigation_items button:hover,
+.main-navigation_items button:active {
+  color: rgb(255, 217, 0);
+}
+
+/* .active class added to NavLinks; different than a:active - that is only when the link is being clicked; a.active is when the user is on that page */
+.main-navigation a.active {
+  color: rgb(243, 149, 26);
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
