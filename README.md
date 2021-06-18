@@ -12,13 +12,13 @@
 
 Synchronize is a great way to discover and sign up for events. Users are able to create their own events as well as book events created by others. Once a event is booked, it will add it to your personal calendar.
 
-### **Check out my deployed project** [HERE](https://powerful-caverns-31078.herokuapp.com/)
+### **Check out my deployed project** [HERE](https://pure-river-50083.herokuapp.com/auth)
 
 ***
 
 ### ***Project Planning***
 
- #### [Workflow](https://trello.com/b/ldtpez9P/project-4) | [Dataflow](https://lucid.app/lucidchart/18b52644-5d9d-4760-a673-2eb4bf27469e/edit?beaconFlowId=7F0AFF8788B16EF9&page=0_0#) | [Entity-Relationship Diagram](https://app.diagrams.net/#G1h1Z65FbjTUahLoOKMMqkQ1Orr1iqi9WQ)
+ #### [Workflow](https://trello.com/b/n9YX5e20/calendar) | [Dataflow](https://app.diagrams.net/#G1iuuckF6ZhX8E_mvVp2JS1sxk-ISOj-k9)
 
 ***
 
@@ -30,24 +30,25 @@ Synchronize is a great way to discover and sign up for events. Users are able to
 
 ***
 
-### ***Back-end Decisions***
+### ***Background***
 
-I decided to use Postgres and Express for the back-end because I find they have a good balance between structure and flexibility. Geocodio is used in the back-end to store coordinates in the db. Additionally, I was able to implement AWS to store and retrieve user's uploaded images. To minimize queries and requests to the db, I decided to send back User model information along with the posts and comments when they were being called. 
+This project was my first implementation of GraphQL. I learned a lot from it and was even able to go back and refactor my schema to modify what results are returned for the bookings. On the React frontend side, it was also a learning experience figuring out how to create a calendar from scratch and it required a lot of logic and data formatting. Overall, I hope to revisit this project and contiue to refactor and refine it's functionality.
 
-### ***Front-end Decisions***
-
-React and Node suit my front-end needs through their component hierarchy. The redux functionality paired with React will help keep my project organized and scalable. The Mapbox API is the front-end of my geolocation functionality. The initial plan was to have three pages - the map, the create post form, and the post details. As the project evolved, I realized I needed to find a way to handle multiple posts at one location. This led me to design a feed page, which allows the user to see all the posts at that location from newest to oldest. With the addition of AWS, and the ability to upload a new profile picture, the app also required a profile page that would not only allow the user to upload their new photo, but also see all their own posts in chronological order.
 
 ### ***Screenshots***
 
-![GeoCode](client/src/assets/GeoSnap.JPG)
+![Synchronize](assets/Synchronize.JPG)
 
 ***
 
 ### ***Future Updates***
 
-- [ ] 
+- [ ] Mobile friendly
+- [ ] Order events by date
+- [ ] Only fetch events for future dates
 
 ***
 
 ### ***Credits***
+
+* [Academind GraphQL Tutorial](https://www.youtube.com/playlist?list=PL55RiY5tL51rG1x02Yyj93iypUuHYXcB_)
