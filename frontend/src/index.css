@@ -27,9 +27,9 @@ code {
 
 .form-actions button,
 .btn {
-  background-color: rgb(243, 149, 26);
+  background-color: rgb(134, 201, 179);
   font: inherit;
-  border: 1px solid rgb(243, 149, 26);
+  border: 1px solid rgb(134, 201, 179);
   border-radius: 3px;
   padding: 0.25rem 1rem;
   margin-right: 1rem;
@@ -42,5 +42,5 @@ code {
 .form-actions button:active,
 .btn:hover,
 .btn:active {
-  background-color: rgb(216, 132, 22);
+  background-color: rgb(134, 201, 179);
 }

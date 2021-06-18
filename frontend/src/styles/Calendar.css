@@ -11,14 +11,28 @@
 
 .weekday {
   width: 10vw;
+  color: black;
+}
+
+.weekday h2 {
+  text-align: center;
 }
 
 .calendar-days {
   display: flex;
   width: 70vw;
   flex-wrap: wrap;
+  border: 1px solid rgb(131, 131, 131);
+  color: rgb(134, 201, 179);
 }
 
 .create-button {
   width: 30vw;
+}
+
+.month {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: black;
 }

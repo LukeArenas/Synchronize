@@ -1,4 +1,4 @@
 export const BASE_URL =
   process.env.NODE_ENV === 'production'
-    ? `${window.location.origin}`
+    ? `${window.location.origin}/graphql`
     : 'http://localhost:3001/graphql'

@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import '../styles/Day.css'
 
 class Day extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
     this.props.mapBookingsToDate()
   }
@@ -20,7 +16,7 @@ class Day extends Component {
               {day.events
                 ? day.events.map((booking) => {
                     return (
-                      <div>
+                      <div className="day-event">
                         {new Date(booking.event.date).toLocaleTimeString()} -{' '}
                         {booking.event.title}
                       </div>

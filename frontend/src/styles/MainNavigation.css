@@ -4,7 +4,7 @@
   top: 0;
   width: 100%;
   height: 3.5rem;
-  background-color: rgb(243, 149, 26);
+  background-color: rgb(134, 201, 179);
   padding: 0 1rem;
   display: flex;
   align-items: center;
@@ -13,6 +13,7 @@
 .main-navigation_logo h1 {
   margin: 0 0 0 1.5rem;
   font-size: 1.5rem;
+  color: rgb(131, 131, 131);
 }
 
 .main-navigation_items {
@@ -35,7 +36,7 @@
 .main-navigation_items a,
 .main-navigation_items button {
   text-decoration: none;
-  color: white;
+  color: rgb(235, 235, 235);
   border: none;
   font: inherit;
   background-color: transparent;
@@ -47,13 +48,13 @@
 .main-navigation_items a:active,
 .main-navigation_items button:hover,
 .main-navigation_items button:active {
-  color: rgb(255, 217, 0);
+  color: rgb(131, 131, 131);
 }
 
 /* .active class added to NavLinks; different than a:active - that is only when the link is being clicked; a.active is when the user is on that page */
 .main-navigation a.active {
-  color: rgb(243, 149, 26);
-  background-color: white;
+  color: rgb(134, 201, 179);
+  background-color: rgb(235, 235, 235);
   padding: 0.5rem 1rem;
   border-radius: 5px;
 }

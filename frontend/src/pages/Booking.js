@@ -21,9 +21,12 @@ class Booking extends Component {
     const requestBody = {
       query: `
           query {
-            bookings {
+            bookings(userId: "${this.context.userId}") {
               _id
               createdAt
+              user {
+                _id
+              }
               event {
                 _id
                 title
@@ -50,8 +53,8 @@ class Booking extends Component {
       })
       .then((resData) => {
         const bookings = resData.data.bookings
-        console.log(bookings)
         this.setState({ bookings: bookings, isLoading: false })
+        console.log(this.state.bookings)
       })
       .catch((err) => {
         console.log(err)

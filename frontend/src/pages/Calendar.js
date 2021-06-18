@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import Day from '../components/Day'
-import CreateModal from '../components//Modal/Modal'
-import Backdrop from '../components//Backdrop/Backdrop'
 import '../styles/Calendar.css'
 
 //logic to find current month, year
@@ -48,12 +46,22 @@ while (isContinued) {
     i++
   }
 }
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
 
 class Calendar extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   state = {
     isCreating: false,
     dateArray: dateArray
@@ -77,7 +85,6 @@ class Calendar extends Component {
         let formattedBookingDate = new Date(
           booking.event.date
         ).toLocaleDateString()
-
         if (`${date.formattedDate}` === `${formattedBookingDate}`) {
           if (
             date.events.length === 0 ||
@@ -93,19 +100,11 @@ class Calendar extends Component {
   }
 
   render() {
-    console.log(this.state.dateArray)
     return (
       <div className="calendar">
-        {/* {this.state.isCreating ? (
-          <div>
-            <Backdrop />
-            <CreateModal handleCancel={this.handleCancel} />
-          </div>
-        ) : (
-          <button className="create-button" onClick={() => this.handleClick()}>
-            +Create Event
-          </button>
-        )} */}
+        <div className="month">
+          <h1>{months[new Date().getMonth()]}</h1>
+        </div>
         <div className="weekdays">
           <div className="weekday">
             <h2>Sunday</h2>
