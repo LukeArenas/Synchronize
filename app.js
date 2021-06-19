@@ -34,7 +34,7 @@ app.use(
   '/graphql',
   graphqlHTTP({
     schema: graphQLSchema, //point at schema
-    rootValue: graphQLResolvers, //point at object that has all resolver functions in it
+    rootValue: graphQLResolvers, //point at object that has all resolver functions inside it
     graphiql: true
   })
 )
