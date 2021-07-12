@@ -12,7 +12,9 @@ class EventsPage extends Component {
     isCreating: false,
     events: [],
     isLoading: false,
-    selectedEvent: null
+    selectedEvent: null,
+    currentMonth: null,
+    currentMonthNum: null
   }
   isActive = true
 
@@ -28,6 +30,7 @@ class EventsPage extends Component {
 
   componentDidMount() {
     this.fetchEvents()
+    this.fetchDate()
   }
 
   startCreateEventHandler = () => {
@@ -143,6 +146,26 @@ class EventsPage extends Component {
           this.setState({ isLoading: false })
         }
       })
+  }
+
+  fetchDate = () => {
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ]
+    const monthNumber = new Date().getMonth()
+    const monthName = months[monthNumber]
+    this.setState({ currentMonth: monthName, currentMonthNum: monthNumber })
   }
 
   showDetailHandler = (eventId) => {
@@ -261,11 +284,14 @@ class EventsPage extends Component {
         {this.state.isLoading ? (
           <Spinner />
         ) : (
-          <EventList
-            events={this.state.events}
-            authUserId={this.context.userId}
-            onViewDetail={this.showDetailHandler}
-          />
+          <div>
+            <h3>Events for {this.state.currentMonth}:</h3>
+            <EventList
+              events={this.state.events}
+              authUserId={this.context.userId}
+              onViewDetail={this.showDetailHandler}
+            />
+          </div>
         )}
       </React.Fragment>
     )
