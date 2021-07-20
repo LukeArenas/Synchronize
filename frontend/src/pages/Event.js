@@ -285,7 +285,7 @@ class EventsPage extends Component {
           <Spinner />
         ) : (
           <div>
-            <h3>Events for {this.state.currentMonth}:</h3>
+            {/* <h3>Events for {this.state.currentMonth}:</h3> */}
             <EventList
               events={this.state.events}
               authUserId={this.context.userId}
